@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/bookingcode.css">
+        <!--以下是bootstrap簡單框架(Ch)
+                    by http://www.w3big.com/zh-TW/bootstrap/bootstrap-intro.html-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+        <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!--以下是固定在頂部的導覽列(TW)
+                    by http://www.w3big.com/zh-TW/bootstrap/bootstrap-navbar.html-->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <!--按鈕樣式-->
+        <link rel="stylesheet" type="text/css" href="css/button.css">
+        <link rel="stylesheet" type="text/css" href="css/icon.css">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="semantic/dist/semantic.min.js"></script>
+        <!--ICON圖標-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+		<header>
+           <!-- <h1 style="color:white;">火車訂票系統</h1>
+            <p id="ps"><i class="train icon"></i>訂票查詢</p>-->
+        </header>
+        
+        <!-----------頂部固定導覽列----------->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color:black;"> <!--rgba(0,30,40,0.8)-->
+        <div class="container-fluid"> 
+         <div class="navbar-header"> 
+             <a class="navbar-brand" href="#">火車訂票系統</a> 
+          </div> 
+        <div> 
+        <ul class="nav navbar-nav" style="font-size:19px;">
+            <li><a href="http://localhost/tickets.html">訂票查詢</a></li>
+            <li><a href="http://localhost/code.html">車次選擇</a></li>
+            <li><a href="http://localhost/cancel.html">取消訂票</a></li>
+            <li class="active"><a href="http://localhost/bookingcode.html">查詢代碼</a></li>
+        </ul> 
+         </div> 
+        </div> 
+        </nav>
+        
+        <div class="container">
+        <form method="post" action="bookingcode.php">
+        <div class="content">
+        <div class="row">
+        <div class="col-sm-4" id="dep">
+		<span></span><h3>起點站</h3>
+		<span></span><select name="departure">
+            <!--$station=array("台北","桃園","新竹","苗栗","台中","彰化","嘉義","台南","高雄","屏東");-->
+            <option value='0'>台北</option>
+            <option value='1'>桃園</option>         
+            <option value='2'>新竹</option>
+            <option value='3'>苗栗</option>
+            <option value='4'>台中</option>
+            <option value='5'>彰化</option>
+            <option value='6'>嘉義</option>
+            <option value='7'>台南</option>
+            <option value='8'>高雄</option>
+            <option value='9'>屏東</option>
+		</select>
+        </div>
+            
+        <div class="col-sm-4" id="arri">
+		<span></span><h3>終點站</h3>
+		<span></span><select name="destination">
+			<option value='0'>台北</option>
+            <option value='1'>桃園</option>         
+            <option value='2'>新竹</option>
+            <option value='3'>苗栗</option>
+            <option value='4'>台中</option>
+            <option value='5'>彰化</option>
+            <option value='6'>嘉義</option>
+            <option value='7'>台南</option>
+            <option value='8'>高雄</option>
+            <option value='9'>屏東</option>
+		</select>
+        </div>
+            
+        </div>
+        <div name="get_date" class="dat" data-role="fieldcontain">
+            <label for="userdate"><h3>選擇日期</h3></label>
+            <input type="date" id="userdate">
+        </div>
+        <div class="ui large form">
+        <div class="userid" style="color:white;">
+            <label><h3>請輸入身分證字號:</h3></label>
+            <input placeholder="Enter UserID" type="text" name="uname" required>
+        </div>
+        </div>
+        <div class="ui inverted segment">
+            <button class="ui inverted olive button">
+            確認
+            <input type="hidden" value="確認">
+            </button>
+        </div>
+        </div>
+        </form>
+        </div>
+        <footer>   
+          <div class="row" id="menu">
+            <div class="col-sm-3" id="book">
+                <i class="fa fa-cloud" style="font-size:125px;"></i>
+                  <h3>訂票查詢</h3>
+                  <p>依日期及時間查詢有哪些班次可以搭乘</p>
+                  <div class="overlay">
+                    <div class="text"><a href="http://localhost/tickets.html" style="font-size:30px;">訂票查詢</a></div>
+                </div>
+              </div>
+              
+            <div class="col-sm-3" id="cancelb">
+              <i class="fa fa-heart" style="font-size:125px;"></i>
+              <h3>取消訂票</h3>
+              <p>以身分證字號和電腦代碼取消已預訂的票</p>
+              <div class="overlay">
+                    <div class="text"><a href="http://localhost/cancel.html" style="font-size:30px;">取消訂票</a></div>
+                </div>
+            </div>
+              
+            <div class="col-sm-3" id="search">
+              <i class="fa fa-car" style="font-size:125px;"></i>
+              <h3>查詢代碼</h3>        
+              <p>想到超商取票但忘記代碼了嗎?</p>
+              <p>輸入日期及身分證字號即可查詢電腦代碼哦</p>
+              <div class="overlay">
+                    <div class="text"><a href="http://localhost/bookingcode.html" style="font-size:30px;">查詢代碼</a></div>
+                </div>
+            </div>
+              
+            <div class="col-sm-3" id="codeb">
+              <i class="fa fa-file" style="font-size:125px;"></i>
+              <h3>車次查詢</h3>
+              <p>依車次直接尋找需要的票</p>
+              <div class="overlay">
+                    <div class="text"><a href="http://localhost/code.html" style="font-size:30px;">車次查詢</a></div>
+                </div>
+            </div>
+              
+          </div>
+        </footer> 
+    </body>
+</html>
